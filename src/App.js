@@ -104,7 +104,7 @@ function App() {
             icon={SkyconType.WIND}
             color={{
               wind: "#ffffff",
-              leaf: "#00ffff",
+              leaf: "darkorange",
             }}
             size={128}
             animate={true}
