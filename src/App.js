@@ -3,18 +3,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { Sunny, Rainy, Cloudy, Snowy, SunShower, Thunder } from "./Components";
-import ReactAnimatedWeather from "react-animated-weather";
-import Calendar from "react-calendar";
+// import ReactAnimatedWeather from "react-animated-weather";
+// import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 import { ReactSkycon, SkyconType } from "react-skycons-extended";
 
-const defaults = {
-  icon: "RAIN",
-  color: "goldenrod",
-  size: 128,
-  animate: true,
-};
+import { Calendar } from "antd";
+
 function App() {
   // const [weather, setWeather] = useState("");
   // useEffect(() => {
@@ -31,147 +27,95 @@ function App() {
   // }, []);
 
   return (
-    <div className="App">
-      <Sunny />
-      <Rainy />
-      <Cloudy />
-      <Snowy />
-      <SunShower />
-      <Thunder />
-      {/* <div>
-        <ReactAnimatedWeather
-          icon={"CLEAR_DAY"}
-          color={defaults.color}
-          size={defaults.size}
-          animate={defaults.animate}
-        />
+    <>
+      <div className="App">
+        <Sunny />
+        <Rainy />
+        <Cloudy />
+        <Snowy />
+        <SunShower />
+        <Thunder />
+        <div>
+          <ReactSkycon
+            icon={SkyconType.PARTLY_CLOUDY_DAY}
+            color={{
+              sun: "darkorange",
+              light_cloud: "#00ffff",
+            }}
+            size={128}
+            animate={true}
+          />
+          <ReactSkycon
+            icon={SkyconType.THUNDER_RAIN}
+            color={{
+              dark_cloud: "#ffffff",
+              thunder: "#00ffff",
+            }}
+            size={128}
+            animate={true}
+          />
 
-        <ReactAnimatedWeather
-          icon={"CLEAR_NIGHT"}
-          color={defaults.color}
-          size={defaults.size}
-          animate={defaults.animate}
-        />
-        <ReactAnimatedWeather
-          icon={"PARTLY_CLOUDY_DAY"}
-          color={defaults.color}
-          size={defaults.size}
-          animate={defaults.animate}
-        />
-        <ReactAnimatedWeather
-          icon={"CLOUDY"}
-          color={"#fff"}
-          size={defaults.size}
-          animate={defaults.animate}
-        />
-        <ReactAnimatedWeather
-          icon={"RAIN"}
-          color={"#fff"}
-          size={defaults.size}
-          animate={defaults.animate}
-        />
-        <ReactAnimatedWeather
-          icon={"SNOW"}
-          color={"#fff"}
-          size={defaults.size}
-          animate={defaults.animate}
-        />
-        <ReactAnimatedWeather
-          icon={"FOG"}
-          color={"#fff"}
-          size={defaults.size}
-          animate={defaults.animate}
-        />
-        <ReactAnimatedWeather
-          icon={"WIND"}
-          color={"#fff"}
-          size={defaults.size}
-          animate={defaults.animate}
-        />
-        <ReactAnimatedWeather
-          icon={"SLEET"}
-          color={"#fff"}
-          size={defaults.size}
-          animate={defaults.animate}
-        />
-      </div> */}
-      <div>
-        <ReactSkycon
-          icon={SkyconType.PARTLY_CLOUDY_DAY}
-          color={{
-            sun: "darkorange",
-            light_cloud: "#00ffff",
-          }}
-          size={128}
-          animate={true}
-        />
-        <ReactSkycon
-          icon={SkyconType.THUNDER_RAIN}
-          color={{
-            dark_cloud: "#ffffff",
-            thunder: "#00ffff",
-          }}
-          size={128}
-          animate={true}
-        />
-
-        <ReactSkycon
-          icon={SkyconType.RAIN}
-          color={{
-            cloud: "#ffffff",
-            rain: "#00ffff",
-          }}
-          size={128}
-          animate={true}
-        />
-        <ReactSkycon
-          icon={SkyconType.SNOW}
-          color={{
-            cloud: "#ffffff",
-            snow: "#00ffff",
-          }}
-          size={128}
-          animate={true}
-        />
-        <ReactSkycon
-          icon={SkyconType.FOG}
-          color={{
-            light_cloud: "#ffffff",
-            fog: "#00ffff",
-          }}
-          size={128}
-          animate={true}
-        />
-        <ReactSkycon
-          icon={SkyconType.SLEET}
-          color={{
-            cloud: "#ffffff",
-            sleet: "#00ffff",
-          }}
-          size={128}
-          animate={true}
-        />
-        <ReactSkycon
-          icon={SkyconType.HAIL}
-          color={{
-            cloud: "#ffffff",
-            hail: "#00ffff",
-          }}
-          size={128}
-          animate={true}
-        />
-        <ReactSkycon
-          icon={SkyconType.WIND}
-          color={{
-            wind: "#ffffff",
-            leaf: "#00ffff",
-          }}
-          size={128}
-          animate={true}
-        />
+          <ReactSkycon
+            icon={SkyconType.RAIN}
+            color={{
+              cloud: "#ffffff",
+              rain: "#00ffff",
+            }}
+            size={128}
+            animate={true}
+          />
+          <ReactSkycon
+            icon={SkyconType.SNOW}
+            color={{
+              cloud: "#ffffff",
+              snow: "#00ffff",
+            }}
+            size={128}
+            animate={true}
+          />
+          <ReactSkycon
+            icon={SkyconType.FOG}
+            color={{
+              light_cloud: "#ffffff",
+              fog: "#00ffff",
+            }}
+            size={128}
+            animate={true}
+          />
+          <ReactSkycon
+            icon={SkyconType.SLEET}
+            color={{
+              cloud: "#ffffff",
+              sleet: "#00ffff",
+            }}
+            size={128}
+            animate={true}
+          />
+          <ReactSkycon
+            icon={SkyconType.HAIL}
+            color={{
+              cloud: "#ffffff",
+              hail: "#00ffff",
+            }}
+            size={128}
+            animate={true}
+          />
+          <ReactSkycon
+            icon={SkyconType.WIND}
+            color={{
+              wind: "#ffffff",
+              leaf: "#00ffff",
+            }}
+            size={128}
+            animate={true}
+          />
+        </div>
+        <div>{/* <Calendar value={new Date()} /> */}</div>
+        <div className="site-calendar-demo-card">
+          <Calendar fullscreen={false} />
+        </div>
       </div>
-      <div>{/* <Calendar value={new Date()} /> */}</div>
-    </div>
+    </>
   );
 }
 

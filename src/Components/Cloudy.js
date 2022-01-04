@@ -1,4 +1,4 @@
-import "../App.css";
+import "./index.css";
 const Cloudy = () => {
   return (
     <div className="cloudy">

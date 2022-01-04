@@ -1,4 +1,4 @@
-import "../App.css";
+import "./index.css";
 const Thunder = () => {
   return (
     <div className="thunder-storm">
