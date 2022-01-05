@@ -10,22 +10,24 @@ import { ReactSkycon, SkyconType } from "react-skycons-extended";
 
 import { Calendar } from "antd";
 
+import Weather from "react-tencent-weather";
+
 function App() {
-  // const [weather, setWeather] = useState("");
+  const [weather, setWeather] = useState("");
 
-  // useEffect(() => {
-  //   const getWeather = async () => {
-  //     const { data } = await axios.get(
-  //       "https://geoapi.qweather.com/v2/city/lookup?location=洛杉矶&key=b92b0cc470a4484c839e523893a27fbd"
-  //     );
-  //     const { data: dataWeather } = await axios.get(
-  //       `https://devapi.qweather.com/v7/weather/now?location=${data.location[0].id}&key=b92b0cc470a4484c839e523893a27fbd`
-  //     );
-  //     setWeather(dataWeather.now.text);
-  //   };
+  useEffect(() => {
+    const getWeather = async () => {
+      const { data } = await axios.get(
+        "https://geoapi.qweather.com/v2/city/lookup?location=上海&key=b92b0cc470a4484c839e523893a27fbd"
+      );
+      const { data: dataWeather } = await axios.get(
+        `https://devapi.qweather.com/v7/weather/now?location=${data.location[0].id}&key=b92b0cc470a4484c839e523893a27fbd`
+      );
+      setWeather(dataWeather?.now);
+    };
 
-  //   getWeather();
-  // }, []);
+    getWeather();
+  }, []);
 
   const handlePanelChange = (date, mode) => {
     console.log(date);
@@ -45,6 +47,14 @@ function App() {
       <SunShower />
       <Thunder />
       <div>
+        <ReactSkycon
+          icon={SkyconType.CLEAR_DAY}
+          color={{
+            sun: "darkorange",
+          }}
+          size={128}
+          animate={true}
+        />
         <ReactSkycon
           icon={SkyconType.PARTLY_CLOUDY_DAY}
           color={{
@@ -120,6 +130,20 @@ function App() {
         />
       </div>
       <div>{/* <Calendar value={new Date()} /> */}</div>
+      <div className="today">
+        <ReactSkycon
+          icon={SkyconType.RAIN}
+          color={{
+            cloud: "#000000",
+            rain: "#00ffff",
+          }}
+          size={128}
+          animate={true}
+        />
+        <h2>{weather?.text}</h2>
+        <h3>{`${weather?.temp} °C`}</h3>
+        <h3>{`${weather?.humidity}%`}</h3>
+      </div>
       <div className="site-calendar-demo-card">
         <Calendar
           fullscreen={false}
@@ -127,7 +151,9 @@ function App() {
           onSelect={handleSelect}
         />
       </div>
-      {/* <div style={{ color: "white", fontSize: "50px" }}>{weather}</div> */}
+      {/* <div style={{ backgroundColor: "#000" }}>
+        <Weather province="上海" city="上海" />
+      </div> */}
     </div>
   );
 }

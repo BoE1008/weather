@@ -8,11 +8,20 @@
 
 
 .site-calendar-demo-card {
-  margin-top: 200px;
-  width: 290px;
+  width: 400px;
   border: 1px solid #f0f0f0;
   border-radius: 2px;
+  margin: 0px auto;
 }
   [data-theme="dark"] .site-calendar-demo-card {
     border: 1px solid #303030;
+  }
+
+  .today {
+    width: 400px;
+    height: 400px;
+    margin: 0px auto;
+    margin-top: 200px;
+    border: 1px solid #f0f0f0;
+    background: #fff;
   }
